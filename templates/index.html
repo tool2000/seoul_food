@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>예비창업자 조회 서비스</title>
+  <link rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'><link rel="stylesheet" href="./style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+   <link rel='stylesheet' href="{{ url_for('static', filename='style.css') }}" />
+   <script src="{{url_for('static', filename='script.js')}}"></script>
+
+   <script>
+    function press(f){
+      if(f.keyCode == 13){
+        $('#contact').submit();
+      }
+    }
+  </script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans|Maven+Pro:500' rel='stylesheet' type='text/css'>
+<div class="deco topdeco">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  </div>
+  
+  <h1>함께 만드는 예비창업자 조회 서비스</h1>
+  <h3>
+    지금도 창업을 꿈꾸는 수많은 이들을 응원합니다!
+  </h3>
+
+ <section class="list-wrap">
+
+   <label for="search-text">Search the list</label>
+   <form id="contact" action="/search" method="POST">
+    <input type="text" name="shop" id="name" placeholder="찾아줘.." class="search-box" onkeypress="JavaScript:press(this.form)">
+   </form>
+
+    <span class="list-count"></span>
+    
+    
+<ul id="list">
+  <li class="in">2021년 폐업현황</li>
+  <li class="in">지역별 업종현황</li>
+  <li class="in">업종별 지역현황</li>
+  <li class="in">Peach-blackberry cobbler</li>
+  <li class="in">Chocolate-strawberry torte</li>
+  <li class="in">Chocolate-zucchini cake</li>
+  <li class="in">Anything involving chocolate and mint</li>
+  <li class="in">Red-velvet cake</li>
+  <li class="in">Anything involving fruits that aren't cherries</li>
+  <span class="empty-item">no results</span>
+</ul>
+
+ <table>
+  {% for w in data %}
+   <tr>
+     <td>{{ w[0] }}</td><td>{{ w[1] }}</td><td>{{ w[2] }}</td><td>{{ w[3] }}</td><td>{{ w[4] }}</td><td>{{ w[5] }}</td><td>{{ w[6] }}</td>
+   </tr>
+  {%endfor%}
+ </table>
+
+   </section>
+   
+
+     <p class="cta">
+    Read more 
+</p>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
